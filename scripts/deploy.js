@@ -4,16 +4,17 @@ const main = async () => {
 
     // Step 1: This is to deploy a new contract
     
+    /*
     const nftContract = await nftContractFactory.deploy();
     await nftContract.deployed();
     console.log("Contract deployed to:", nftContract.address);
+    */
 
-    // Step 2: This is to interact with deployed contract
+    //Step 2: This is to interact with deployed contract
     
-    // const nftContract = await nftContractFactory.attach(
-    //     "<deployed-contract-address-here>"
-            //0x1d27cf0d740a57c427A5839D13eb05c7096AEffD
-    // );
+     const nftContract = await nftContractFactory.attach(
+         "0x1d27cf0d740a57c427A5839D13eb05c7096AEffD"
+     );
 
     let newMembership = await nftContract.initiateTransfer(1000);
 
