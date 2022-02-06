@@ -13,3 +13,8 @@ npx hardhat node
 node scripts/sample-script.js
 npx hardhat help
 ```
+
+Testing contracts on local
+```shell
+npx hardhat run scripts/run-local.js
+```
