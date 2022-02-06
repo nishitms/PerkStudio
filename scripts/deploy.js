@@ -10,17 +10,23 @@ const main = async () => {
     await newMembership.wait();
 
     let newMembershipRewards = await nftContract.getMembershipRewardBalance();
+    
     console.log("Membership reward is :", newMembershipRewards);
 
     let ownerOfMembershipTokenId = await nftContract.ownerOfMembership(0);
+    
     console.log("Owner of membership is :", ownerOfMembershipTokenId);
 
     newMembership = await nftContract.initiateTransfer(2000);
+
     newMembershipRewards = await nftContract.getMembershipRewardBalance();
+    
     console.log("New Membership reward is :", newMembershipRewards);
 
     newMembership = await nftContract.initiateTransfer(4500);
+
     newMembershipRewards = await nftContract.getMembershipRewardBalance();
+    
     console.log("New Membership reward is :", newMembershipRewards);
   };
   
