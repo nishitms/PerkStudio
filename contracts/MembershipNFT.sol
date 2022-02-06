@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
 contract MembershipNFT is MembershipFactory, ERC721URIStorage {
 
-    constructor() ERC721 ("PerkStudio", "PERKS") {
+    constructor() ERC721 ("PerkStudio", "PSM") {
         console.log("This is my Membership NFT contract. Woah!");
     }
 
@@ -20,7 +20,11 @@ contract MembershipNFT is MembershipFactory, ERC721URIStorage {
         _safeMint(msg.sender, nftTokenId);
 
         // Set the NFTs data.
-        _setTokenURI(nftTokenId, "blah");
+        _setTokenURI(nftTokenId, "{CompanyName:'CrypDonals'}}");
         console.log("An NFT w/ ID %s has been minted to %s", nftTokenId, msg.sender);
+    }
+
+    function ownerOfMembership(uint256 _tokenId) public view returns (address _owner) {
+        return membershipToOwner[_tokenId];
     }
 }

@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 
 import "hardhat/console.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
+import "./RewardsCoin.sol";
 
 contract MembershipFactory {
 
@@ -42,6 +43,10 @@ contract MembershipFactory {
 
     function _getMembershipRewards(address _address) private view returns (uint) {
         return membershipRewards[_address];
+    }
+
+    function _updateMembershipRewards(uint256 additionalRewards) internal {
+        membershipRewards[msg.sender] = membershipRewards[msg.sender] + additionalRewards;
     }
 
     function createNewMembership() internal returns (uint) {

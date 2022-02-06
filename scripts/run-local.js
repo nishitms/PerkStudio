@@ -1,10 +1,10 @@
 const main = async () => {
-    const nftContractFactory = await hre.ethers.getContractFactory('MembershipNFT');
+    const nftContractFactory = await hre.ethers.getContractFactory('MembershipEngine');
     const nftContract = await nftContractFactory.deploy();
     await nftContract.deployed();
     console.log("Contract deployed to:", nftContract.address);
 
-    let newMembership = await nftContract.makeMembershipNFT();
+    let newMembership = await nftContract.initiateTransfer(100);
 
     // Wait for it to be mined.
     await newMembership.wait();
