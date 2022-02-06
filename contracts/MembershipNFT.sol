@@ -20,7 +20,7 @@ contract MembershipNFT is MembershipFactory, ERC721URIStorage {
         _safeMint(msg.sender, nftTokenId);
 
         // Set the NFTs data.
-        _setTokenURI(nftTokenId, "{CompanyName:'CryptDonalds'}}");
+        _setTokenURI(nftTokenId, "https://jsonkeeper.com/b/TK8S");
         console.log("An NFT w/ ID %s has been minted to %s", nftTokenId, msg.sender);
     }
 

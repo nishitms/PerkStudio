@@ -1,15 +1,18 @@
 const main = async () => {
     const nftContractFactory = await hre.ethers.getContractFactory('MembershipEngine');
 
-    // This is to deploy a new contract
-    // const nftContract = await nftContractFactory.deploy();
-    // await nftContract.deployed();
-    // console.log("Contract deployed to:", nftContract.address);
 
-    // This is to interact with deployed contract
+    // Step 1: This is to deploy a new contract
+    
+    const nftContract = await nftContractFactory.deploy();
+    await nftContract.deployed();
+    console.log("Contract deployed to:", nftContract.address);
+
+    // Step 2: This is to interact with deployed contract
     
     // const nftContract = await nftContractFactory.attach(
-    //     "0x4037aC103e80524fC67394145bdC43Fa72e3EA63"
+    //     "<deployed-contract-address-here>"
+            //0x1d27cf0d740a57c427A5839D13eb05c7096AEffD
     // );
 
     let newMembership = await nftContract.initiateTransfer(1000);
