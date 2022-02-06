@@ -9,13 +9,13 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 contract MembershipNFT is MembershipFactory, ERC721URIStorage {
 
     constructor() ERC721 ("PerkStudio", "PSM") {
-        console.log("This is my Membership NFT contract. Woah!");
+        // console.log("This is my Membership NFT contract. Woah!");
     }
 
-    function makeMembershipNFT() public {
+    function makeMembershipNFT() internal {
         // Get the latest tokenId, which the factory created.
         uint256 nftTokenId = createNewMembership();
-
+        
         // Actually mint the NFT to the sender using msg.sender.
         _safeMint(msg.sender, nftTokenId);
 

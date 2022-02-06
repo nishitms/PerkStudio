@@ -14,7 +14,7 @@ contract MembershipFactory {
     Counters.Counter private _tokenIds;
 
     constructor() {
-        console.log("This is my MembershipFactory contract. Whoa!");
+        // console.log("This is my MembershipFactory contract. Whoa!");
     }
 
     struct Membership {
@@ -26,13 +26,17 @@ contract MembershipFactory {
     mapping (uint256 => address) public membershipToOwner;
     mapping (address => uint256) membershipRewards;
 
-    function _createMembership(string memory _businessName) private returns (uint){
+    function _createMembership(string memory _businessName) private returns (uint) {
+        console.log("Creating new NFT from MembershipFactory");
+        
         memberships.push(Membership(_businessName));
         uint256 newItemId = _tokenIds.current();
         membershipToOwner[newItemId] = msg.sender;
+        
         _addNewReward(msg.sender);
         emit NewMembership(newItemId, _businessName);
         _tokenIds.increment();
+        
         return newItemId;
     }
 

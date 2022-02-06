@@ -16,7 +16,8 @@ contract MembershipEngine is MembershipNFT {
         console.log("Received a transaction request for %s", _amount);
         //first check if this owner is a member
         if (getMembershipRewardsCount() == 0) {
-            createNewMembership();
+            console.log("Creating a new membership NFT for this owner..");
+            makeMembershipNFT();
         }
 
         //then add rewards to this owner according to the ratio

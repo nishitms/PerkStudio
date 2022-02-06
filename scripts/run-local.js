@@ -4,7 +4,7 @@ const main = async () => {
     await nftContract.deployed();
     console.log("Contract deployed to:", nftContract.address);
 
-    let newMembership = await nftContract.initiateTransfer(100);
+    let newMembership = await nftContract.initiateTransfer(20);
 
     // Wait for it to be mined.
     await newMembership.wait();
@@ -12,6 +12,10 @@ const main = async () => {
     let newMembershipRewards = await nftContract.getMembershipRewardsCount();
     
     console.log("Membership reward is :", newMembershipRewards);
+
+    let ownerOfMembershipTokenId = await nftContract.ownerOfMembership(0);
+    
+    console.log("Owner of membership is :", ownerOfMembershipTokenId);
   };
   
   const runMain = async () => {
