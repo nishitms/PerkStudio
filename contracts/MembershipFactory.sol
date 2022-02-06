@@ -33,16 +33,18 @@ contract MembershipFactory {
         uint256 newItemId = _tokenIds.current();
         membershipToOwner[newItemId] = msg.sender;
         
+        _addNewReward(msg.sender);
+
         emit NewMembership(newItemId, _businessName);
         _tokenIds.increment();
         
         return newItemId;
     }
 
-    // function _addNewReward(address _address) private {
-    //     //for now just increment the mapping
-    //     membershipRewards[_address]++;
-    // }
+    function _addNewReward(address _address) private {
+        //for now just give 1 reward token
+        membershipRewards[_address]++;
+    }
 
     function _getMembershipRewards(address _address) private view returns (uint) {
         return membershipRewards[_address];
